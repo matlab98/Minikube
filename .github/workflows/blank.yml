@@ -17,5 +17,5 @@ jobs:
     - name: Run a one-line script
       run: echo Hello, world!
     - name: apt install minikube
-      run: apt install minikube
+      run: sudo apt install minikube
 
