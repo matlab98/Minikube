@@ -27,6 +27,6 @@ jobs:
       run: cp minikube /usr/local/bin && rm minikube
     
     - name: start
-      run:  minikube start 
+      run:  ./minikube-linux-amd64 version
 
 
