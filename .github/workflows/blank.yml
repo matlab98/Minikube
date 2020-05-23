@@ -21,16 +21,11 @@ jobs:
     - name: updating
       run: apt -y update && apt install -y apt-transport-https
 
-
-    
     - name: data
-      run: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && touch /etc/apt/sources.list.d/kubernetes.list && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list && apt update && apt install -y kubectl
+      run: curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
 
     - name: minikube
-      run: curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.2/minikube-linux-amd64
-    
-    - name: prueba
-      run: chmod +x minikube && mv minikube /usr/local/bin/
+      run: cp minikube /usr/local/bin && rm minikube
     
     - name: start
       run: minikube start
