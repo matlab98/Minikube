@@ -24,9 +24,7 @@ jobs:
       run: curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube 
       
     - name: acceso
-      run: cp minikube /usr/local/bin && rm minikube && where minikube
-    
-    - name: start
-      run:  ./usr/local/bin/minikube version
+      run: cp minikube /usr/local/bin && rm minikube && cd /usr/local/bin
+
 
 
