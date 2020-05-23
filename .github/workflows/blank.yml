@@ -12,20 +12,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-      if: ${{whoami=runner}}
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: echo Hello, world! && whoami && id
     
     - name: updating
-      run: apt-get update -y && apt-get upgrade -y && apt-get install curl wget apt-transport-https -y && apt-get install virtualbox virtualbox-ext-pack
-
-    - name: minikube
-      run: wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && cp minikube-linux-amd64 /usr/local/bin/minikube && chmod 755 /usr/local/bin/minikube 
-
-    - name: kubectl
-      run: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list && apt-get update -y && apt-get install kubectl -y 
+      run: apt update && apt upgrade && apt install -y apt-transport-https && curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo cp minikube /usr/local/bin && rm minikube
     
     - name: start
       run: kubectl version -o json && minikube start --vm-driver=VirtualBox
