@@ -8,17 +8,19 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-
+    
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+      
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
-      run: echo Hello, world!
+      run: echo Hello, world! && whoami && id
     
     - name: updating
-      run: sudo apt -y update && sudo apt install -y apt-transport-https
+      run: apt -y update && apt install -y apt-transport-https
+
     
     - name: data
       run: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && touch /etc/apt/sources.list.d/kubernetes.list && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list && sudo apt update && sudo apt install -y kubectl
