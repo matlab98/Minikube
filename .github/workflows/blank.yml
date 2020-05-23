@@ -27,6 +27,6 @@ jobs:
       run: cp minikube /usr/local/bin && rm minikube
     
     - name: start
-      run: kubectl version -o json && minikube start --vm-driver=VirtualBox
+      run: kubectl version -o json && minikube start 
 
 
