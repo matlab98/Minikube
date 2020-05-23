@@ -22,9 +22,7 @@ jobs:
     - name: minikube
       run: chmod +x minikube && sudo cp minikube /usr/local/bin && rm minikube
     
-    - name: version
-      run: minikube version
-    
-    - name: start
-      run: sudo minikube start
+    - name: version and start
+      run: minikube version && minikube start
+
 
