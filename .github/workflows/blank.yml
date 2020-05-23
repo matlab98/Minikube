@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-      if: ${{whoami=root}}
+      if: ${{whoami=runner}}
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
