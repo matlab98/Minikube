@@ -16,13 +16,17 @@ jobs:
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: echo Hello, world!
-    - name: apt install minikube
-      run: curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 
-      
-    - name: minikube
-      run: chmod +x minikube && sudo cp minikube /usr/local/bin && rm minikube
     
-    - name: version and start
-      run: minikube version && minikube start
+    - name: updating
+      run: sudo apt-get update && sudo apt-get install -y apt-transport-https
+    
+    - name: box
+      run: sudo apt-get install -y virtualbox virtualbox-ext-pack
+    
+    - name: data
+      run: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && sudo touch /etc/apt/sources.list.d/kubernetes.list && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list && sudo apt-get update && sudo apt-get update && sudo apt-get install -y kubectl
+
+    - name: minikube
+      run: curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.2/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
 
 
