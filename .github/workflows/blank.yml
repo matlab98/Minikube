@@ -28,6 +28,6 @@ jobs:
       run: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list && apt-get update -y && apt-get install kubectl -y 
     
     - name: start
-      run: kubectl version -o json && minikube start
+      run: kubectl version -o json && minikube start --vm-driver=VirtualBox
 
 
