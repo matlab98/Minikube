@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - prueba
+      - master
 
 name: Deploy to kubernetes
 jobs:
@@ -17,7 +17,11 @@ jobs:
     - name: Run a one-line script
       run: echo Hello, world!
 
-    - name: pod kubctl version
-      run: |
-       kubectl version --client=true \ 
-       pwd 
+    - name: Setup Minikube
+      uses: manusa/actions-setup-minikube@v1.0.2
+      with:
+        minikube version: 'v1.9.2'
+        kubernetes version: 'v1.18.2'
+        github token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Interact with the cluster
+      run: kubectl get nodes
