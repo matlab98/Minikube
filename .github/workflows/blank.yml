@@ -18,7 +18,13 @@ jobs:
       run: echo Hello, world! && whoami && id
     
     - name: updating
-      run: apt update && apt upgrade && apt install -y apt-transport-https && curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && cp minikube /usr/local/bin && rm minikube
+      run: apt update && apt upgrade && apt install -y apt-transport-https 
+    
+    - name: minikube
+      run: curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube 
+      
+    - name: acceso
+      run: cp minikube /usr/local/bin && rm minikube
     
     - name: start
       run: kubectl version -o json && minikube start --vm-driver=VirtualBox
