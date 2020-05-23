@@ -31,5 +31,8 @@ jobs:
     
     - name: prueba
       run: chmod +x minikube && mv minikube /usr/local/bin/
+    
+    - name: start
+      run: minikube start
 
 
