@@ -19,15 +19,15 @@ jobs:
       run: echo Hello, world! && whoami && id
     
     - name: updating
-      run: apt -y update && apt install -y apt-transport-https
-
-    - name: data
-      run: curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
+      run: apt-get update -y && apt-get upgrade -y && apt-get install curl wget apt-transport-https -y && apt-get install virtualbox virtualbox-ext-pack
 
     - name: minikube
-      run: cp minikube /usr/local/bin && rm minikube
+      run: wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && cp minikube-linux-amd64 /usr/local/bin/minikube && chmod 755 /usr/local/bin/minikube 
+
+    - name: kubectl
+      run: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list && apt-get update -y && apt-get install kubectl -y 
     
     - name: start
-      run: minikube start
+      run: kubectl version -o json && minikube start
 
 
