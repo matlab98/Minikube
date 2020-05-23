@@ -18,10 +18,10 @@ jobs:
       run: echo Hello, world!
     
     - name: updating
-      run: apt -y update && apt install -y apt-transport-https
+      run: sudo apt -y update && sudo apt install -y apt-transport-https
     
     - name: data
-      run: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && touch /etc/apt/sources.list.d/kubernetes.list && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list && apt update && apt install -y kubectl
+      run: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && touch /etc/apt/sources.list.d/kubernetes.list && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list && sudo apt update && sudo apt install -y kubectl
 
     - name: minikube
       run: curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.2/minikube-linux-amd64
