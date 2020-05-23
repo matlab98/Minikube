@@ -26,5 +26,5 @@ jobs:
       run: minikube version
     
     - name: start
-      run : minikube start
+      run: sudo minikube start
 
