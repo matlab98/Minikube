@@ -18,10 +18,10 @@ jobs:
       run: echo Hello, world!
     
     - name: updating
-      run: apt-get update && apt-get install -y apt-transport-https
+      run: apt -y update && apt install -y apt-transport-https
     
     - name: box
-      run: apt-get install -y virtualbox virtualbox-ext-pack
+      run: apt install -y virtualbox virtualbox-ext-pack
     
     - name: data
       run: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && touch /etc/apt/sources.list.d/kubernetes.list && echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list && apt-get update && sudo apt-get update && apt-get install -y kubectl
