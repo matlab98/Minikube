@@ -18,6 +18,13 @@ jobs:
       run: echo Hello, world!
     - name: apt install minikube
       run: curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 
+      
     - name: minikube
       run: chmod +x minikube && sudo cp minikube /usr/local/bin && rm minikube
+    
+    - name: version
+      run: minikube version
+    
+    - name: start
+      run : minikube start
 
